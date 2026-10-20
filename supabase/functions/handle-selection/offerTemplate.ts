@@ -171,8 +171,14 @@ export function generateOfferLetterHtml(data: OfferLetterData): string {
     During this program, you will work on milestone-driven engineering briefs designed around real-world software architecture standards. You will be evaluated objectively against industrial rubrics covering code architecture, correctness, and technical documentation.
   </p>
 
-  <div class="notice-box">
-    <strong>Program Instructions:</strong> Detailed sprint onboarding, repository access, and project brief instructions will be sent to your registered email address prior to the sprint start date.
+  <div class="notice-box" style="background: #f0fdf4; border-left: 4px solid #22c55e; color: #166534; padding: 16px 20px;">
+    <strong style="color: #14532d; font-size: 13px; text-transform: uppercase;">⚠️ Mandatory Cohort Onboarding Action:</strong>
+    <p style="margin: 8px 0 12px 0; font-size: 13px; color: #166534;">
+      All sprint milestones, project briefings, daily syncs, and mentor guidance are coordinated strictly through the official WhatsApp group. Joining is mandatory for all selected interns.
+    </p>
+    <a href="https://chat.whatsapp.com/DrRIcLb9LXfIdSd1WDiFX6?mode=gi_t" target="_blank" style="display: inline-block; background: #25D366; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; font-size: 13px;">
+      📲 Join Official Interns WhatsApp Group
+    </a>
   </div>
 
   <p>

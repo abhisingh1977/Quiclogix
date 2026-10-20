@@ -344,7 +344,7 @@ export function ApplyPage() {
                   <strong>Technical Review:</strong> All candidate applications are reviewed objectively against track-specific prerequisites by our engineering panel.
                 </li>
                 <li>
-                  <strong>Selection Notification:</strong> Selection is not automatic. If your application is accepted, you will receive an official selection notification and personalized offer letter at <strong>{submittedSummary.email}</strong>.
+                  <strong>Selection Notification &amp; Onboarding:</strong> Selection is not automatic. If your application is accepted, you will receive an official selection email containing your signed offer letter and the mandatory invite link to the official Cohort WhatsApp Group at <strong>{submittedSummary.email}</strong>.
                 </li>
                 <li>
                   <strong>No Account Required:</strong> You do not need to register or log into any student portal. Program updates and offers are communicated directly via email.
