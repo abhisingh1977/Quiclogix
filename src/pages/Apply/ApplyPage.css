@@ -59,7 +59,7 @@
 
 .apply-breadcrumb__sep {
   color: var(--color-border);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .apply-breadcrumb__current {
@@ -327,8 +327,8 @@
 
 .apply-optional-badge {
   color: var(--color-text-muted);
-  font-weight: normal;
-  font-size: 11px;
+  font-weight: 500;
+  font-size: 12.5px;
 }
 
 .apply-select,

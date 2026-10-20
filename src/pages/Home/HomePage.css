@@ -600,7 +600,7 @@
 
 .home-hero__metric-label {
   font-family: var(--font-mono);
-  font-size: 0.625rem; /* 10px */
+  font-size: var(--text-2xs);
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
 }
@@ -860,7 +860,7 @@
 
 .home-capability-card__meta span {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-2xs);
   background-color: var(--color-bg-primary);
   border: 1px solid var(--color-border);
   padding: 3px 8px;

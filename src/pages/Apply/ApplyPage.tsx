@@ -156,6 +156,19 @@ export function ApplyPage() {
       return false
     }
 
+    const cleanPhone = phone.trim().replace(/[\s\-\+\(\)]/g, '')
+    if (!phone.trim()) {
+      setFeedback({ type: 'error', message: 'Please enter your mobile phone number.' })
+      return false
+    }
+    if (cleanPhone.length < 10) {
+      setFeedback({
+        type: 'error',
+        message: 'Please provide a valid 10-digit mobile number for WhatsApp community and cohort coordination.',
+      })
+      return false
+    }
+
     if (!institutionName.trim()) {
       setFeedback({ type: 'error', message: 'Please enter your college, institute, or university name.' })
       return false
@@ -507,12 +520,13 @@ export function ApplyPage() {
               <div className="apply-grid apply-grid--2col">
                 <div className="apply-field-group">
                   <Input
-                    label="Mobile Number (Optional)"
+                    label="Mobile Number"
                     type="tel"
+                    required
                     placeholder="Enter your mobile number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    helperText="For urgent cohort coordination and communication."
+                    helperText="Mandatory for WhatsApp cohort community & official admissions coordination."
                   />
                 </div>
 

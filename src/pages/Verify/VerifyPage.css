@@ -212,14 +212,14 @@
 .verify-trust-item__badge {
   align-self: flex-start;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--color-accent-text);
   background: rgba(216, 180, 55, 0.1);
   border: 1px solid rgba(216, 180, 55, 0.3);
   border-radius: var(--radius-xs);
-  padding: 1px 6px;
+  padding: 2px 7px;
 }
 
 [data-theme='dark'] .verify-trust-item__badge {
@@ -433,7 +433,7 @@
 
 .verify-data-hash {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--color-text-secondary);
   word-break: break-all;
   background: transparent;

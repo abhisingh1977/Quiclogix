@@ -218,10 +218,12 @@ export function ContactPage() {
 
             {submitStatus === 'success' && (
               <div className="contact-alert contact-alert--success" role="status">
-                <span className="contact-alert__badge">SUCCESS</span>
+                <span className="contact-alert__badge" style={{ backgroundColor: '#1e7e34', color: '#ffffff' }}>✓ SENT</span>
                 <div>
-                  <strong>Inquiry Validated Successfully</strong>
-                  <p>In this preview build, client validation and anti-spam controls passed. Live SMTP dispatch will operate upon production domain configuration.</p>
+                  <strong style={{ fontSize: '15px', color: 'var(--color-text-primary)' }}>Inquiry Successfully Sent!</strong>
+                  <p style={{ fontSize: '13.5px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>
+                    Thank you for reaching out to Quiclogix Solutions. Your message has been transmitted successfully to our admissions and engineering leads. We will review your inquiry and respond within 24–48 hours.
+                  </p>
                 </div>
               </div>
             )}

@@ -174,7 +174,7 @@ export function AuthPage() {
                 borderRadius: '9999px',
                 background: isConfigured ? 'rgba(30, 107, 71, 0.1)' : 'rgba(163, 98, 0, 0.1)',
                 border: `1px solid ${isConfigured ? 'rgba(30, 107, 71, 0.3)' : 'rgba(163, 98, 0, 0.3)'}`,
-                fontSize: '11px',
+                fontSize: 'var(--text-2xs, 12.5px)',
                 fontWeight: 600,
                 color: isConfigured ? 'var(--color-success, #1e6b47)' : 'var(--color-warning, #a36200)',
                 margin: '0 auto var(--space-3)',
