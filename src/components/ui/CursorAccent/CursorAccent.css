@@ -1,0 +1,53 @@
+/* ============================================================
+   Cursor Accent — Subtle Atmospheric Pointer Follower
+   ============================================================ */
+
+.cursor-accent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  margin-left: -13px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  border: 1.5px solid var(--color-signature-gold);
+  background-color: rgba(216, 180, 55, 0.08);
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition:
+    opacity 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  will-change: transform, opacity;
+}
+
+/* Visible default state over canvas / background */
+.cursor-accent[data-visible='true'] {
+  opacity: 0.65;
+}
+
+/* Translucent & unobtrusive over text content */
+.cursor-accent[data-visible='true'][data-mode='text'] {
+  opacity: 0.10 !important;
+  border-color: rgba(216, 180, 55, 0.25) !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Gentle subtle expansion on interactive buttons/links */
+.cursor-accent[data-visible='true'][data-mode='interactive'] {
+  opacity: 0.45;
+  background-color: rgba(216, 180, 55, 0.12);
+  border-color: var(--color-signature-gold);
+}
+
+/* Hard disable on touchscreens, coarse pointers, and reduced motion */
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-accent {
+    display: none !important;
+  }
+}

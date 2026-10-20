@@ -1,0 +1,542 @@
+/* ============================================================
+   InternshipPage — Modern Editorial Styles
+   ============================================================ */
+
+.internship-page {
+  overflow-x: hidden;
+}
+
+/* ==================== HERO ==================== */
+
+.internship-hero {
+  padding-top: calc(var(--space-20) + var(--space-4));
+  padding-bottom: var(--space-12);
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.internship-hero__container {
+  max-width: 900px;
+}
+
+.internship-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.internship-hero__meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 12px;
+  background-color: rgba(216, 180, 55, 0.08);
+  border: 1px solid rgba(216, 180, 55, 0.28);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.internship-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .internship-hero__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.internship-hero__accent {
+  color: var(--color-accent-text);
+}
+
+.internship-hero__lead {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+  max-width: 760px;
+}
+
+.internship-hero__spec-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-sm);
+}
+
+@media (min-width: 768px) {
+  .internship-hero__spec-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.internship-spec-cell {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .internship-spec-cell {
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .internship-spec-cell:last-child {
+    border-right: none;
+  }
+}
+
+.internship-spec-cell__label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-accent-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  margin-bottom: var(--space-1);
+}
+
+.internship-spec-cell__val {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+/* ==================== POLICY GRID ==================== */
+
+.internship-policy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .internship-policy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.internship-policy-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast);
+}
+
+.internship-policy-card:hover {
+  border-color: var(--color-border-strong);
+}
+
+.internship-policy-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.internship-policy-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.internship-policy-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.internship-policy-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.internship-policy-card__list li {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  padding-left: var(--space-4);
+  position: relative;
+}
+
+.internship-policy-card__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-text);
+  font-weight: bold;
+}
+
+.internship-policy-detail {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  background-color: var(--color-bg-primary);
+  border-left: 2px solid var(--color-accent);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.internship-policy-card__notice {
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+/* ==================== 19 DOMAIN DIRECTORY ==================== */
+
+.internship-catalog-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.internship-search-wrap {
+  position: relative;
+  max-width: 560px;
+}
+
+.internship-search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  padding-right: var(--space-10);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.internship-search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(216, 180, 55, 0.18);
+}
+
+.internship-search-clear {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  line-height: 1;
+  padding: var(--space-1);
+}
+
+.internship-search-clear:hover {
+  color: var(--color-text-primary);
+}
+
+.internship-category-tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.internship-category-tab {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.internship-category-tab:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.internship-category-tab--active {
+  background-color: rgba(216, 180, 55, 0.14);
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.internship-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.internship-domains-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .internship-domains-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .internship-domains-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.internship-domain-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.internship-domain-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.internship-domain-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.internship-domain-card__tag {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.internship-domain-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+  line-height: 1.25;
+}
+
+.internship-domain-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-4) 0;
+  flex-grow: 1;
+}
+
+.internship-domain-card__skills {
+  margin-bottom: var(--space-3);
+}
+
+.internship-domain-card__skills-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-accent-text);
+  margin-bottom: var(--space-1);
+}
+
+.internship-domain-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.internship-domain-chip {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  color: var(--color-text-secondary);
+}
+
+.internship-domain-card__brief {
+  background-color: var(--color-bg-primary);
+  border-left: 2px solid var(--color-accent);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-5);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+}
+
+.internship-domain-card__brief-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.internship-domain-card__brief-text {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.internship-domain-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+.internship-domain-card__btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.internship-domains-empty {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  background-color: var(--color-bg-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ==================== SPRINT CADENCE ==================== */
+
+.internship-sprint-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .internship-sprint-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .internship-sprint-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.internship-sprint-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.internship-sprint-card__week {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-accent-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  margin-bottom: var(--space-2);
+}
+
+.internship-sprint-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.internship-sprint-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ==================== FAQS ==================== */
+
+.internship-faq-wrap {
+  max-width: 840px;
+  margin: 0 auto var(--space-12) auto;
+}
+
+.internship-cta {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.internship-cta__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.internship-cta__desc {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+}

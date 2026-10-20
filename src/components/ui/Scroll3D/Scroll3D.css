@@ -1,0 +1,205 @@
+/* ============================================================
+   Scroll3D — 3D Typography & Perspective Atmosphere System
+   Quiclogix Solutions
+   ============================================================ */
+
+/* ---- Global 3D Perspective Context ---- */
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* ---- 3D Typography Styles ---- */
+.text-3d-word-wrap {
+  display: inline-block;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  vertical-align: top;
+  margin-right: 0.28em;
+  will-change: transform, opacity;
+}
+
+.text-3d-word {
+  display: inline-block;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-origin: 50% 100% -20px;
+}
+
+.text-3d-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-text-primary) 0%,
+    var(--color-text-primary) 55%,
+    var(--color-accent-text) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='dark'] .text-3d-gradient {
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 0%,
+    #E2E8E4 60%,
+    #E4C558 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-3d-sheen {
+  position: relative;
+  display: inline-block;
+}
+
+.text-3d-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(216, 180, 55, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: text3dShimmer 6s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes text3dShimmer {
+  0%, 70% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* ---- 3D Interactive Card Container ---- */
+.card-3d-wrapper {
+  position: relative;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 260ms ease, border-color 260ms ease;
+  will-change: transform;
+}
+
+.card-3d-inner.card-3d-hovered {
+  box-shadow: 
+    0 12px 36px -8px rgba(17, 22, 19, 0.12),
+    0 4px 12px rgba(216, 180, 55, 0.08);
+}
+
+[data-theme='dark'] .card-3d-inner.card-3d-hovered {
+  box-shadow: 
+    0 16px 48px -8px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(216, 180, 55, 0.12);
+}
+
+/* 3D Specular Glare Sheen */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+.card-3d-inner:hover .card-3d-glare {
+  opacity: 1;
+}
+
+/* 3D Depth Floating Children */
+.depth-pop-sm {
+  transform: translateZ(16px);
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.depth-pop-md {
+  transform: translateZ(28px);
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.depth-pop-lg {
+  transform: translateZ(42px);
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- Ambient 3D Background Canvas ---- */
+.perspective-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.perspective-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- Ambient 3D Geometric Floaters ---- */
+.floating-3d-badge {
+  display: inline-flex;
+  align-items: center;
+  transform: perspective(800px) translateZ(10px);
+  animation: ambientFloat3D 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat3D {
+  0% {
+    transform: perspective(800px) translateY(0px) rotateX(0deg) rotateY(0deg) translateZ(8px);
+  }
+  50% {
+    transform: perspective(800px) translateY(-5px) rotateX(4deg) rotateY(-4deg) translateZ(18px);
+  }
+  100% {
+    transform: perspective(800px) translateY(-8px) rotateX(-3deg) rotateY(5deg) translateZ(12px);
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .text-3d-word-wrap,
+  .text-3d-word,
+  .card-3d-wrapper,
+  .card-3d-inner,
+  .depth-pop-sm,
+  .depth-pop-md,
+  .depth-pop-lg,
+  .floating-3d-badge {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .perspective-canvas-container {
+    display: none;
+  }
+}

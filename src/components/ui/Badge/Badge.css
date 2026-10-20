@@ -1,0 +1,133 @@
+/* ============================================================
+   Badge — Editorial Technology Practice Component Styles
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ---- Sizes ---- */
+.badge--sm {
+  padding: 3px 6px;
+  font-size: var(--text-2xs);
+}
+
+.badge--md {
+  padding: 4px 8px;
+  font-size: var(--text-xs);
+}
+
+/* ---- Color Variants ---- */
+.badge--default {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.section-dark .badge--default,
+[data-theme='dark'] .badge--default {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.badge--accent {
+  background-color: rgba(216, 180, 55, 0.12);
+  color: var(--color-accent-text);
+  border-color: rgba(216, 180, 55, 0.35);
+}
+
+.section-dark .badge--accent,
+[data-theme='dark'] .badge--accent {
+  background-color: rgba(216, 180, 55, 0.16);
+  color: var(--color-accent);
+  border-color: rgba(216, 180, 55, 0.4);
+}
+
+.badge--brass {
+  background-color: rgba(216, 180, 55, 0.12);
+  color: var(--color-accent-text);
+  border-color: rgba(216, 180, 55, 0.35);
+}
+
+.section-dark .badge--brass,
+[data-theme='dark'] .badge--brass {
+  background-color: rgba(216, 180, 55, 0.16);
+  color: var(--color-accent);
+  border-color: rgba(216, 180, 55, 0.4);
+}
+
+.badge--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border-color: rgba(30, 107, 71, 0.3);
+}
+
+[data-theme='dark'] .badge--success,
+.section-dark .badge--success {
+  background-color: rgba(46, 125, 50, 0.18);
+  color: #4CAF50;
+  border-color: rgba(76, 175, 80, 0.35);
+}
+
+.badge--warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border-color: rgba(163, 98, 0, 0.3);
+}
+
+[data-theme='dark'] .badge--warning,
+.section-dark .badge--warning {
+  background-color: rgba(228, 197, 88, 0.16);
+  color: #E4C558;
+  border-color: rgba(228, 197, 88, 0.35);
+}
+
+.badge--error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border-color: rgba(181, 54, 48, 0.3);
+}
+
+[data-theme='dark'] .badge--error,
+.section-dark .badge--error {
+  background-color: rgba(229, 115, 115, 0.16);
+  color: #EF5350;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+.badge--info {
+  background-color: rgba(30, 107, 71, 0.1);
+  color: var(--color-success);
+  border-color: rgba(30, 107, 71, 0.25);
+}
+
+[data-theme='dark'] .badge--info,
+.section-dark .badge--info {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.badge--outline {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.section-dark .badge--outline,
+[data-theme='dark'] .badge--outline {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}

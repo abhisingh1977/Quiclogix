@@ -1,0 +1,14 @@
+// useAuth.ts — Hook to access authentication context
+
+import { useContext } from 'react'
+import { AuthContext, type AuthContextType } from '@/contexts/authContextDef'
+
+export function useAuth(): AuthContextType {
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider')
+  }
+  return context
+}
+
+export type { AuthContextType }

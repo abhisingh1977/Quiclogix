@@ -1,0 +1,105 @@
+/* ============================================================
+   Accordion — Editorial Technology Practice Component Styles
+   ============================================================ */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+}
+
+.section-dark .accordion,
+[data-theme='dark'] .accordion {
+  border-top-color: var(--color-border);
+}
+
+.accordion__item {
+  background-color: transparent;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.section-dark .accordion__item,
+[data-theme='dark'] .accordion__item {
+  border-bottom-color: var(--color-border);
+}
+
+.accordion__item--open {
+  background-color: var(--color-bg-subtle);
+}
+
+.section-dark .accordion__item--open,
+[data-theme='dark'] .accordion__item--open {
+  background-color: var(--color-bg-subtle);
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.section-dark .accordion__trigger,
+[data-theme='dark'] .accordion__trigger {
+  color: var(--color-text-primary);
+}
+
+.accordion__trigger:hover {
+  color: var(--color-accent-text);
+}
+
+.section-dark .accordion__trigger:hover,
+[data-theme='dark'] .accordion__trigger:hover {
+  color: var(--color-accent);
+}
+
+.accordion__trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+}
+
+.accordion__chevron {
+  color: var(--color-text-muted);
+  transition: transform var(--transition-base), color var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: var(--space-4);
+}
+
+.accordion__chevron--open {
+  transform: rotate(180deg);
+  color: var(--color-accent-text);
+}
+
+.section-dark .accordion__chevron--open,
+[data-theme='dark'] .accordion__chevron--open {
+  color: var(--color-accent);
+}
+
+.accordion__content {
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+}
+
+.accordion__body {
+  padding-bottom: var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.section-dark .accordion__body,
+[data-theme='dark'] .accordion__body {
+  color: var(--color-text-secondary);
+}

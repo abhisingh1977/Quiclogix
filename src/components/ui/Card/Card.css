@@ -1,0 +1,100 @@
+/* ============================================================
+   Card — Editorial Technology Practice Component Styles
+   ============================================================ */
+
+.card {
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.card--hoverable:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+/* ---- Variants ---- */
+.card--default {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+}
+
+.card--elevated {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+}
+
+.card--elevated.card--hoverable:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+.card--outlined {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+}
+
+.card--paper {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+}
+
+.card--dark {
+  background-color: var(--color-forest-surface);
+  color: var(--color-dark-surface-text);
+  border: 1px solid var(--color-forest-border);
+}
+
+.card--dark.card--hoverable:hover {
+  border-color: #385E4B;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Fallback for glass variant */
+.card--glass {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+}
+
+.section-dark .card {
+  background-color: var(--color-forest-surface);
+  border-color: var(--color-forest-border);
+  color: var(--color-text-primary);
+}
+
+.section-dark .card--hoverable:hover {
+  border-color: #385E4B;
+}
+
+/* ---- Padding Scale ---- */
+.card--padding-none { padding: 0; }
+.card--padding-sm { padding: var(--space-4); }
+.card--padding-md { padding: var(--space-6); }
+.card--padding-lg { padding: var(--space-8); }
+
+/* ---- Sub-components ---- */
+.card__header {
+  margin-bottom: var(--space-4);
+}
+
+.card__body {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.card__footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.section-dark .card__footer,
+.card--dark .card__footer {
+  border-top-color: var(--color-border);
+}
