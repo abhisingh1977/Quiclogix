@@ -271,26 +271,24 @@ export function ApplyPage() {
           return
         } catch (rpcErr: unknown) {
           const errStr = rpcErr instanceof Error ? rpcErr.message : String(rpcErr)
-          const isNetworkFailure = errStr.includes('Failed to fetch') || errStr.includes('fetch') || errStr.includes('NetworkError')
-          if (isNetworkFailure) {
-            console.warn('Supabase backend unreachable, utilizing local registration fallback:', rpcErr)
-            // Proceed to local fallback generator below
-          } else {
-            throw rpcErr
-          }
+          throw new Error(errStr || 'Submission failed. Please check your network connection and try again.')
         }
       }
 
-      // 3. Fallback for unconfigured or local testing environment
-      const generatedRefId = `QLX-2026-APP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`
-      setSubmittedSummary({
-        referenceId: generatedRefId,
-        applicationId: crypto.randomUUID ? crypto.randomUUID() : '44444444-4444-4444-4444-444444444401',
-        domainName: currentDomain.name,
-        fullName: fullName.trim(),
-        email: email.trim().toLowerCase(),
-        submittedAt: new Date().toISOString(),
-      })
+      // 3. Sandbox fallback strictly for local development testing
+      if (import.meta.env.DEV) {
+        const generatedRefId = `QLX-2026-APP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`
+        setSubmittedSummary({
+          referenceId: generatedRefId,
+          applicationId: crypto.randomUUID ? crypto.randomUUID() : '44444444-4444-4444-4444-444444444401',
+          domainName: currentDomain.name,
+          fullName: fullName.trim(),
+          email: email.trim().toLowerCase(),
+          submittedAt: new Date().toISOString(),
+        })
+      } else {
+        throw new Error('Unable to connect to the Quiclogix admissions register. Please check your internet connection and try again.')
+      }
     } catch (err: unknown) {
       setFeedback({
         type: 'error',
