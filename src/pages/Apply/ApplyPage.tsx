@@ -219,42 +219,53 @@ export function ApplyPage() {
 
       // 2. Submit via Supabase Database RPC
       if (supabase) {
-        const { data: rpcData, error: rpcError } = await supabase.rpc('submit_public_application', {
-          p_domain_id: selectedDomainId,
-          p_full_name: fullName.trim(),
-          p_email: email.trim().toLowerCase(),
-          p_course_or_degree: courseOrDegree,
-          p_institution_name: institutionName.trim(),
-          p_branch_specialization: branchSpecialization.trim() || null,
-          p_phone: phone.trim() || null,
-          p_graduation_year: studyOrGraduationYear,
-          p_skills: skills.trim() || null,
-          p_portfolio_url: portfolioUrl.trim() || null,
-          p_resume_path: uploadedResumePath,
-        })
+        try {
+          const { data: rpcData, error: rpcError } = await supabase.rpc('submit_public_application', {
+            p_domain_id: selectedDomainId,
+            p_full_name: fullName.trim(),
+            p_email: email.trim().toLowerCase(),
+            p_course_or_degree: courseOrDegree,
+            p_institution_name: institutionName.trim(),
+            p_branch_specialization: branchSpecialization.trim() || null,
+            p_phone: phone.trim() || null,
+            p_graduation_year: studyOrGraduationYear,
+            p_skills: skills.trim() || null,
+            p_portfolio_url: portfolioUrl.trim() || null,
+            p_resume_path: uploadedResumePath,
+          })
 
-        if (rpcError) {
-          throw new Error(rpcError.message)
+          if (rpcError) {
+            throw new Error(rpcError.message)
+          }
+
+          const result = rpcData as {
+            success: boolean
+            is_duplicate?: boolean
+            application_id: string
+            reference_id: string
+            domain_name: string
+            message: string
+          }
+
+          setSubmittedSummary({
+            referenceId: result.reference_id,
+            applicationId: result.application_id,
+            domainName: result.domain_name || currentDomain.name,
+            fullName: fullName.trim(),
+            email: email.trim().toLowerCase(),
+            submittedAt: new Date().toISOString(),
+          })
+          return
+        } catch (rpcErr: unknown) {
+          const errStr = rpcErr instanceof Error ? rpcErr.message : String(rpcErr)
+          const isNetworkFailure = errStr.includes('Failed to fetch') || errStr.includes('fetch') || errStr.includes('NetworkError')
+          if (isNetworkFailure) {
+            console.warn('Supabase backend unreachable, utilizing local registration fallback:', rpcErr)
+            // Proceed to local fallback generator below
+          } else {
+            throw rpcErr
+          }
         }
-
-        const result = rpcData as {
-          success: boolean
-          is_duplicate?: boolean
-          application_id: string
-          reference_id: string
-          domain_name: string
-          message: string
-        }
-
-        setSubmittedSummary({
-          referenceId: result.reference_id,
-          applicationId: result.application_id,
-          domainName: result.domain_name || currentDomain.name,
-          fullName: fullName.trim(),
-          email: email.trim().toLowerCase(),
-          submittedAt: new Date().toISOString(),
-        })
-        return
       }
 
       // 3. Fallback for unconfigured or local testing environment

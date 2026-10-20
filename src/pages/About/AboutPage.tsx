@@ -1,30 +1,109 @@
+import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { OwnerNotice } from '@/components/ui/OwnerNotice'
 import { Button } from '@/components/ui/Button'
-import { Text3D, Card3D } from '@/components/ui/Scroll3D'
+import { Card3D } from '@/components/ui/Scroll3D'
 import './AboutPage.css'
 
 export function AboutPage() {
   return (
     <div className="about-page">
-      {/* ==================== PAGE HEADER ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="about-header">
+        <div className="about-header__backdrop" aria-hidden="true">
+          <div className="about-header__grid-pattern" />
+          <div className="about-header__glow" />
+        </div>
+
         <div className="container about-header__container">
-          <div className="about-header__meta">
-            <span className="about-header__meta-tag floating-3d-badge">Company Profile &bull; Engineering Discipline</span>
+          <div className="about-header__grid">
+            {/* Left: Editorial Intro */}
+            <div className="about-header__content">
+              <motion.div
+                className="about-header__meta"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="about-header__meta-tag">
+                  <span className="about-header__pulse-dot" aria-hidden="true" />
+                  <span>About Quiclogix &bull; Engineering Practice</span>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                className="about-header__title"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+              >
+                Engineering ideas into{' '}
+                <span className="about-header__accent">real-world solutions.</span>
+              </motion.h1>
+
+              <motion.p
+                className="about-header__lead"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+              >
+                Quiclogix Solutions was established to bridge the gap between academic theory and production-grade software engineering. We operate simultaneously as a technical engineering advisory and an evaluation-driven talent platform.
+              </motion.p>
+
+              <motion.div
+                className="about-header__actions"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 }}
+              >
+                <a href="#services">
+                  <Button variant="primary" size="md">
+                    Explore Capabilities
+                  </Button>
+                </a>
+                <a href="#contact">
+                  <Button variant="secondary" size="md">
+                    Get in Touch
+                  </Button>
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right: Architectural Identity Brief */}
+            <motion.div
+              className="about-header__aside"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="about-hero-card">
+                <div className="about-hero-card__header">
+                  <span className="about-hero-card__eyebrow">PRACTICE OVERVIEW</span>
+                  <Badge variant="accent" size="sm">Verified Studio</Badge>
+                </div>
+                <h3 className="about-hero-card__title">Software Engineering with Architectural Rigor</h3>
+                <p className="about-hero-card__text">
+                  Bridging disciplined system architecture, relational data modeling, and practical talent development into a cohesive practice.
+                </p>
+
+                <div className="about-hero-card__specs">
+                  <div className="about-hero-spec-item">
+                    <span className="about-hero-spec-item__label">Core Practice</span>
+                    <strong className="about-hero-spec-item__val">Technical Advisory &amp; Cloud Systems</strong>
+                  </div>
+                  <div className="about-hero-spec-item">
+                    <span className="about-hero-spec-item__label">Talent Framework</span>
+                    <strong className="about-hero-spec-item__val">19-Track Project-Based Cohorts</strong>
+                  </div>
+                  <div className="about-hero-spec-item">
+                    <span className="about-hero-spec-item__label">Engineering Standard</span>
+                    <strong className="about-hero-spec-item__val">Strict Types &amp; Zero-Trust Access</strong>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-          <Text3D
-            as="h1"
-            className="about-header__title"
-            text="Engineering software with architectural rigor, transparency, and purpose."
-            depth="deep"
-            sheen={true}
-            gradient={true}
-          />
-          <p className="about-header__lead">
-            Quiclogix Solutions was established to bridge the gap between academic theory and production-grade software engineering. We operate simultaneously as a technical engineering advisory and an evaluation-driven talent platform.
-          </p>
         </div>
       </section>
 

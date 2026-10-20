@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react'
+import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Accordion, type AccordionItem } from '@/components/ui/Accordion'
 import { OwnerNotice } from '@/components/ui/OwnerNotice'
 import { INTERNSHIP_DOMAINS, type InternshipDomain } from '@/data/internshipDomains'
-import { Text3D, Card3D } from '@/components/ui/Scroll3D'
+import { Card3D } from '@/components/ui/Scroll3D'
 import './InternshipPage.css'
 
 const CATEGORIES = [
@@ -104,44 +105,89 @@ export function InternshipPage() {
 
   return (
     <div className="internship-page">
-      {/* ==================== HERO ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="internship-hero">
+        <div className="internship-hero__backdrop" aria-hidden="true">
+          <div className="internship-hero__grid-pattern" />
+          <div className="internship-hero__glow" />
+        </div>
+
         <div className="container internship-hero__container">
-          <div className="internship-hero__meta">
-            <span className="internship-hero__meta-tag floating-3d-badge">Internship Program &bull; Applied Engineering</span>
+          <div className="internship-hero__intro">
+            <motion.div
+              className="internship-hero__meta"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="internship-hero__meta-tag">
+                <span className="internship-hero__pulse-dot" aria-hidden="true" />
+                <span>Applied Learning &bull; Engineering Cohorts</span>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              className="internship-hero__title"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+            >
+              One month of production engineering,{' '}
+              <span className="internship-hero__accent">verified outcomes.</span>
+            </motion.h1>
+
+            <motion.p
+              className="internship-hero__lead"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.16 }}
+            >
+              A structured, project-oriented engineering internship platform. Choose from 19 specialization domains, build production code against industrial briefs, and receive objective rubric evaluations.
+            </motion.p>
+
+            <motion.div
+              className="internship-hero__actions"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.22 }}
+            >
+              <a href="#domains">
+                <Button variant="primary" size="md">
+                  Explore 19 Domains
+                </Button>
+              </a>
+              <a href="#faq">
+                <Button variant="secondary" size="md">
+                  Cohort FAQs
+                </Button>
+              </a>
+            </motion.div>
           </div>
 
-          <Text3D
-            as="h1"
-            className="internship-hero__title"
-            text="One month of production engineering, verified outcomes."
-            depth="deep"
-            sheen={true}
-            gradient={true}
-          />
-
-          <p className="internship-hero__lead">
-            A structured, project-oriented engineering internship platform. Choose from 19 specialization domains, build production code against industrial briefs, and receive objective rubric evaluations.
-          </p>
-
-          <Card3D maxTilt={4} innerClassName="internship-hero__spec-strip">
-            <div className="internship-spec-cell">
-              <span className="internship-spec-cell__label">Domains</span>
-              <strong className="internship-spec-cell__val depth-pop-sm">19 Specializations</strong>
-            </div>
-            <div className="internship-spec-cell">
-              <span className="internship-spec-cell__label">Duration</span>
-              <strong className="internship-spec-cell__val depth-pop-sm">4 Weeks (1 Month)</strong>
-            </div>
-            <div className="internship-spec-cell">
-              <span className="internship-spec-cell__label">Structure</span>
-              <strong className="internship-spec-cell__val depth-pop-sm">Milestone Briefs &amp; Reviews</strong>
-            </div>
-            <div className="internship-spec-cell">
-              <span className="internship-spec-cell__label">Credentials</span>
-              <strong className="internship-spec-cell__val depth-pop-sm">Certificate + Merited LOR</strong>
-            </div>
-          </Card3D>
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <Card3D maxTilt={4} innerClassName="internship-hero__spec-strip">
+              <div className="internship-spec-cell">
+                <span className="internship-spec-cell__label">Domains</span>
+                <strong className="internship-spec-cell__val depth-pop-sm">19 Specializations</strong>
+              </div>
+              <div className="internship-spec-cell">
+                <span className="internship-spec-cell__label">Duration</span>
+                <strong className="internship-spec-cell__val depth-pop-sm">4 Weeks (1 Month)</strong>
+              </div>
+              <div className="internship-spec-cell">
+                <span className="internship-spec-cell__label">Structure</span>
+                <strong className="internship-spec-cell__val depth-pop-sm">Milestone Briefs &amp; Reviews</strong>
+              </div>
+              <div className="internship-spec-cell">
+                <span className="internship-spec-cell__label">Credentials</span>
+                <strong className="internship-spec-cell__val depth-pop-sm">Certificate + Merited LOR</strong>
+              </div>
+            </Card3D>
+          </motion.div>
         </div>
       </section>
 

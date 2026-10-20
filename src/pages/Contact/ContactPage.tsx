@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react'
+import { motion } from 'motion/react'
+import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { OwnerNotice } from '@/components/ui/OwnerNotice'
-import { Text3D, Card3D } from '@/components/ui/Scroll3D'
+import { Card3D } from '@/components/ui/Scroll3D'
 import './ContactPage.css'
 
 interface FormData {
@@ -97,23 +99,109 @@ export function ContactPage() {
 
   return (
     <div className="contact-page">
-      {/* ==================== HEADER ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="contact-header">
+        <div className="contact-header__backdrop" aria-hidden="true">
+          <div className="contact-header__grid-pattern" />
+          <div className="contact-header__glow" />
+        </div>
+
         <div className="container contact-header__container">
-          <div className="contact-header__meta">
-            <span className="contact-header__meta-tag">Contact &bull; Corporate Communications</span>
+          <div className="contact-header__grid">
+            {/* Left: Editorial Header & Actions */}
+            <div className="contact-header__content">
+              <motion.div
+                className="contact-header__meta"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="contact-header__meta-tag">
+                  <span className="contact-header__pulse-dot" aria-hidden="true" />
+                  <span>Communications &bull; Direct Engagement</span>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                className="contact-header__title"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+              >
+                Connect with Quiclogix{' '}
+                <span className="contact-header__accent">engineering and admissions.</span>
+              </motion.h1>
+
+              <motion.p
+                className="contact-header__lead"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+              >
+                Submit technical consulting requirements, architectural review inquiries, or upcoming internship cohort questions. Our technical leads triage and respond directly.
+              </motion.p>
+
+              <motion.div
+                className="contact-header__actions"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 }}
+              >
+                <a href="#inquiry-form-section">
+                  <Button variant="primary" size="md">
+                    Direct Inquiry Form
+                  </Button>
+                </a>
+                <a href="#corporate-channels">
+                  <Button variant="secondary" size="md">
+                    Corporate Channels
+                  </Button>
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right: Communications Directory Card */}
+            <motion.div
+              className="contact-header__aside"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="contact-hero-card">
+                <div className="contact-hero-card__header">
+                  <span className="contact-hero-card__eyebrow">COMMUNICATIONS DIRECTORY</span>
+                  <Badge variant="accent" size="sm">Direct Response</Badge>
+                </div>
+                <h3 className="contact-hero-card__title">Direct Engagement Channels</h3>
+
+                <div className="contact-hero-card__items">
+                  <div className="contact-channel-item">
+                    <span className="contact-channel-item__badge">ADVISORY</span>
+                    <strong className="contact-channel-item__title">Client Engineering &amp; Architecture</strong>
+                    <p className="contact-channel-item__desc">Consulting scopes, PostgreSQL cloud migrations, and technical audits.</p>
+                  </div>
+
+                  <div className="contact-channel-item">
+                    <span className="contact-channel-item__badge">COHORTS</span>
+                    <strong className="contact-channel-item__title">Internship Intake &amp; Academic Support</strong>
+                    <p className="contact-channel-item__desc">19-track syllabus inquiries, milestone timelines, and evaluation rubrics.</p>
+                  </div>
+
+                  <div className="contact-channel-item">
+                    <span className="contact-channel-item__badge">REGISTRY</span>
+                    <strong className="contact-channel-item__title">Credential Verification Support</strong>
+                    <p className="contact-channel-item__desc">Verification assistance for employers, universities, and background checks.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-          <Text3D as="h1" className="contact-header__title" variant="gradient">
-            Connect with Quiclogix Solutions.
-          </Text3D>
-          <p className="contact-header__lead">
-            Submit technical consulting requirements, architectural review inquiries, or upcoming internship cohort questions.
-          </p>
         </div>
       </section>
 
       {/* ==================== INQUIRY FORM & INFO ==================== */}
       <Section
+        id="inquiry-form-section"
         tag="Inquiry Form"
         theme="white"
         spacing="spacious"
@@ -251,7 +339,7 @@ export function ContactPage() {
           </div>
 
           {/* Corporate Communications Column */}
-          <div className="contact-info-card">
+          <div className="contact-info-card" id="corporate-channels">
             <div className="contact-info-card__header">
               <h3 className="contact-info-card__title">Corporate Communications</h3>
             </div>

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
@@ -70,37 +71,118 @@ const CASE_STUDIES: CaseStudy[] = [
 export function ProjectsPage() {
   return (
     <div className="projects-page">
-      {/* ==================== HEADER ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="projects-header">
-        <div className="container projects-header__container">
-          <div className="projects-header__meta">
-            <span className="projects-header__meta-tag floating-3d-badge">Case Studies &bull; Reference Patterns</span>
-          </div>
-          <Text3D
-            as="h1"
-            className="projects-header__title"
-            text="Case studies grounded in architectural honesty."
-            depth="deep"
-            sheen={true}
-            gradient={true}
-          />
-          <p className="projects-header__lead">
-            Quiclogix Solutions maintains strict standards of public transparency: all case studies, benchmarks, and prototypes below are explicitly categorized to distinguish internal engineering references from external commercial work.
-          </p>
+        <div className="projects-header__backdrop" aria-hidden="true">
+          <div className="projects-header__grid-pattern" />
+          <div className="projects-header__glow" />
+        </div>
 
-          <div className="projects-header__notice">
-            <OwnerNotice
-              decisionId="P-02"
-              title="Client Case Studies Notice"
-              description="Commercial enterprise client case studies are subject to non-disclosure agreements and will be published upon formal client authorization. Quiclogix does not publish fabricated client testimonials."
-              variant="inline"
-            />
+        <div className="container projects-header__container">
+          <div className="projects-header__grid">
+            {/* Left: Editorial Header & Actions */}
+            <div className="projects-header__content">
+              <motion.div
+                className="projects-header__meta"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="projects-header__meta-tag">
+                  <span className="projects-header__pulse-dot" aria-hidden="true" />
+                  <span>Case Studies &bull; Reference Patterns</span>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                className="projects-header__title"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+              >
+                Case studies grounded in{' '}
+                <span className="projects-header__accent">architectural honesty.</span>
+              </motion.h1>
+
+              <motion.p
+                className="projects-header__lead"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+              >
+                Quiclogix Solutions maintains strict standards of public transparency: all case studies, benchmarks, and prototypes below are explicitly categorized to distinguish internal engineering references from external commercial work.
+              </motion.p>
+
+              <motion.div
+                className="projects-header__actions"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 }}
+              >
+                <a href="#case-studies-dossier">
+                  <Button variant="primary" size="md">
+                    Explore Benchmarks
+                  </Button>
+                </a>
+                <a href="#contact">
+                  <Button variant="secondary" size="md">
+                    Architecture Inquiry
+                  </Button>
+                </a>
+              </motion.div>
+
+              <div className="projects-header__notice">
+                <OwnerNotice
+                  decisionId="P-02"
+                  title="Client Case Studies Notice"
+                  description="Commercial enterprise client case studies are subject to non-disclosure agreements and will be published upon formal client authorization. Quiclogix does not publish fabricated client testimonials."
+                  variant="inline"
+                />
+              </div>
+            </div>
+
+            {/* Right: Reference Implementations Strip */}
+            <motion.div
+              className="projects-header__aside"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="projects-hero-card">
+                <div className="projects-hero-card__header">
+                  <span className="projects-hero-card__eyebrow">ENGINEERING SYSTEMS</span>
+                  <Badge variant="accent" size="sm">Verified Benchmarks</Badge>
+                </div>
+                <h3 className="projects-hero-card__title">Production Gateways &amp; Blueprints</h3>
+
+                <div className="projects-hero-card__items">
+                  <div className="projects-system-item">
+                    <span className="projects-system-item__badge">PRODUCTION</span>
+                    <strong className="projects-system-item__title">Credential Verification Gateway</strong>
+                    <p className="projects-system-item__desc">SHA-256 tamper-resistant digest, sub-50ms query response time</p>
+                  </div>
+
+                  <div className="projects-system-item">
+                    <span className="projects-system-item__badge">BLUEPRINT</span>
+                    <strong className="projects-system-item__title">Idempotent Webhook Pipeline</strong>
+                    <p className="projects-system-item__desc">Row-level locking, HMAC verification, zero race conditions</p>
+                  </div>
+
+                  <div className="projects-system-item">
+                    <span className="projects-system-item__badge">DESIGN SYSTEM</span>
+                    <strong className="projects-system-item__title">Tokenized Accessible UI</strong>
+                    <p className="projects-system-item__desc">WCAG AA compliance, zero runtime warnings, 0.0 CLS</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ==================== CASE STUDIES DOSSIER ==================== */}
       <Section
+        id="case-studies-dossier"
         tag="Case Studies"
         title="Architectural Benchmarks"
         subtitle="Technical breakdowns detailing problem context, system design, stack, and verified outcomes."

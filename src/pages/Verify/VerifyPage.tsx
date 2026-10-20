@@ -1,9 +1,10 @@
 import { useState, type FormEvent } from 'react'
+import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { Text3D, Card3D } from '@/components/ui/Scroll3D'
+import { Card3D } from '@/components/ui/Scroll3D'
 import './VerifyPage.css'
 
 interface VerificationRecord {
@@ -61,23 +62,107 @@ export function VerifyPage() {
 
   return (
     <div className="verify-page">
-      {/* ==================== HEADER ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="verify-header">
+        <div className="verify-header__backdrop" aria-hidden="true">
+          <div className="verify-header__grid-pattern" />
+          <div className="verify-header__glow" />
+        </div>
+
         <div className="container verify-header__container">
-          <div className="verify-header__meta">
-            <span className="verify-header__meta-tag">Public Registry &bull; Credential Authentication</span>
+          <div className="verify-header__grid">
+            {/* Left: Editorial Header & Actions */}
+            <div className="verify-header__content">
+              <motion.div
+                className="verify-header__meta"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="verify-header__meta-tag">
+                  <span className="verify-header__pulse-dot" aria-hidden="true" />
+                  <span>Public Registry &bull; Credential Authentication</span>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                className="verify-header__title"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+              >
+                Verify a Quiclogix{' '}
+                <span className="verify-header__accent">credential with confidence.</span>
+              </motion.h1>
+
+              <motion.p
+                className="verify-header__lead"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+              >
+                Employers, academic admissions officers, and clients can independently verify the authenticity and status of completion documents issued by Quiclogix Solutions without requiring account creation.
+              </motion.p>
+
+              <motion.div
+                className="verify-header__actions"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 }}
+              >
+                <a href="#lookup-terminal">
+                  <Button variant="primary" size="md">
+                    Query Credential
+                  </Button>
+                </a>
+                <Button variant="secondary" size="md" onClick={loadSample}>
+                  Try Sample ID
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right: Cryptographic Trust Architecture Card */}
+            <motion.div
+              className="verify-header__aside"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="verify-hero-card">
+                <div className="verify-hero-card__header">
+                  <span className="verify-hero-card__eyebrow">AUDIT PROTOCOL</span>
+                  <Badge variant="accent" size="sm">Zero-Trust Registry</Badge>
+                </div>
+                <h3 className="verify-hero-card__title">Cryptographic Trust Standard</h3>
+
+                <div className="verify-hero-card__items">
+                  <div className="verify-trust-item">
+                    <span className="verify-trust-item__badge">SHA-256</span>
+                    <strong className="verify-trust-item__title">Tamper-Resistant Fingerprint</strong>
+                    <p className="verify-trust-item__desc">Every certificate contains an immutable cryptographic digest generated upon cohort graduation.</p>
+                  </div>
+
+                  <div className="verify-trust-item">
+                    <span className="verify-trust-item__badge">PUBLIC ACCESS</span>
+                    <strong className="verify-trust-item__title">Zero-Login Lookup</strong>
+                    <p className="verify-trust-item__desc">Public endpoints allow third parties to independently authenticate records with zero barriers.</p>
+                  </div>
+
+                  <div className="verify-trust-item">
+                    <span className="verify-trust-item__badge">REAL-TIME</span>
+                    <strong className="verify-trust-item__title">Live Revocation Audit</strong>
+                    <p className="verify-trust-item__desc">Instant status validation confirms active validity versus administrative revocation.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-          <Text3D as="h1" className="verify-header__title" variant="gradient">
-            Verify a Quiclogix Credential.
-          </Text3D>
-          <p className="verify-header__lead">
-            Employers, academic admissions officers, and clients can independently verify the authenticity and status of completion documents issued by Quiclogix Solutions.
-          </p>
         </div>
       </section>
 
       {/* ==================== LOOKUP INTERFACE ==================== */}
       <Section
+        id="lookup-terminal"
         tag="Verification Lookup"
         theme="white"
         spacing="spacious"

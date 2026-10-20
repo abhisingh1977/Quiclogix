@@ -26,7 +26,8 @@
   transform-origin: 50% 100% -20px;
 }
 
-.text-3d-gradient {
+.text-3d-gradient .text-3d-word,
+.perspective-container.text-3d-gradient {
   background: linear-gradient(
     135deg,
     var(--color-text-primary) 0%,
@@ -38,7 +39,8 @@
   background-clip: text;
 }
 
-[data-theme='dark'] .text-3d-gradient {
+[data-theme='dark'] .text-3d-gradient .text-3d-word,
+[data-theme='dark'] .perspective-container.text-3d-gradient {
   background: linear-gradient(
     135deg,
     #FFFFFF 0%,

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
@@ -85,37 +86,132 @@ const SERVICES: ServiceItem[] = [
 export function ServicesPage() {
   return (
     <div className="services-page">
-      {/* ==================== HEADER ==================== */}
+      {/* ==================== PAGE INTRODUCTORY HERO ==================== */}
       <section className="services-header">
-        <div className="container services-header__container">
-          <div className="services-header__meta">
-            <span className="services-header__meta-tag floating-3d-badge">Capabilities &bull; Engineering &amp; Advisory</span>
-          </div>
-          <Text3D
-            as="h1"
-            className="services-header__title"
-            text="Engineering services delivered with predictability, clarity, and craft."
-            depth="deep"
-            sheen={true}
-            gradient={true}
-          />
-          <p className="services-header__lead">
-            Every technical engagement follows a structured framework: explicit problem definition, quantifiable deliverables, transparent architecture, and verified code handoffs.
-          </p>
+        <div className="services-header__backdrop" aria-hidden="true">
+          <div className="services-header__grid-pattern" />
+          <div className="services-header__glow" />
+        </div>
 
-          <div className="services-header__notice">
-            <OwnerNotice
-              decisionId="S-01"
-              title="Commercial Services Scope"
-              description="Services reflect Quiclogix Solutions core engineering competencies. Commercial contracts, service level agreements, and timelines are tailored per engagement."
-              variant="inline"
-            />
+        <div className="container services-header__container">
+          <div className="services-header__grid">
+            {/* Left: Editorial Header & Actions */}
+            <div className="services-header__content">
+              <motion.div
+                className="services-header__meta"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="services-header__meta-tag">
+                  <span className="services-header__pulse-dot" aria-hidden="true" />
+                  <span>Capabilities &bull; Engineering &amp; Advisory</span>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                className="services-header__title"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+              >
+                Engineering services delivered with{' '}
+                <span className="services-header__accent">predictability and craft.</span>
+              </motion.h1>
+
+              <motion.p
+                className="services-header__lead"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+              >
+                Every technical engagement follows a structured framework: explicit problem definition, quantifiable deliverables, transparent architecture, and verified code handoffs.
+              </motion.p>
+
+              <motion.div
+                className="services-header__actions"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 }}
+              >
+                <a href="#services-catalog">
+                  <Button variant="primary" size="md">
+                    Review Engagements
+                  </Button>
+                </a>
+                <a href="#contact">
+                  <Button variant="secondary" size="md">
+                    Discuss an Engagement
+                  </Button>
+                </a>
+              </motion.div>
+
+              <div className="services-header__notice">
+                <OwnerNotice
+                  decisionId="S-01"
+                  title="Commercial Services Scope"
+                  description="Services reflect Quiclogix Solutions core engineering competencies. Commercial contracts, service level agreements, and timelines are tailored per engagement."
+                  variant="inline"
+                />
+              </div>
+            </div>
+
+            {/* Right: Technical Disciplines Grid */}
+            <motion.div
+              className="services-header__aside"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="services-hero-card">
+                <div className="services-hero-card__header">
+                  <span className="services-hero-card__eyebrow">ENGINEERING PRACTICES</span>
+                  <Badge variant="accent" size="sm">4 Core Disciplines</Badge>
+                </div>
+                <h3 className="services-hero-card__title">Production Architecture &amp; Delivery</h3>
+
+                <div className="services-hero-card__disciplines">
+                  <div className="services-discipline-item">
+                    <div className="services-discipline-item__marker">01</div>
+                    <div className="services-discipline-item__body">
+                      <strong className="services-discipline-item__name">Full-Stack Web Engineering</strong>
+                      <p className="services-discipline-item__desc">React 19, TypeScript, high-throughput REST/RPC</p>
+                    </div>
+                  </div>
+
+                  <div className="services-discipline-item">
+                    <div className="services-discipline-item__marker">02</div>
+                    <div className="services-discipline-item__body">
+                      <strong className="services-discipline-item__name">PostgreSQL &amp; Cloud Architecture</strong>
+                      <p className="services-discipline-item__desc">Supabase, Row-Level Security, Serverless Edge</p>
+                    </div>
+                  </div>
+
+                  <div className="services-discipline-item">
+                    <div className="services-discipline-item__marker">03</div>
+                    <div className="services-discipline-item__body">
+                      <strong className="services-discipline-item__name">Modernization &amp; Audits</strong>
+                      <p className="services-discipline-item__desc">WCAG AA, Lighthouse 90+, zero-downtime refactoring</p>
+                    </div>
+                  </div>
+
+                  <div className="services-discipline-item">
+                    <div className="services-discipline-item__marker">04</div>
+                    <div className="services-discipline-item__body">
+                      <strong className="services-discipline-item__name">Design Systems &amp; UI Engineering</strong>
+                      <p className="services-discipline-item__desc">Tokenized foundations, accessible ARIA primitives</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ==================== SERVICES CATALOG ==================== */}
       <Section
+        id="services-catalog"
         tag="Services Catalog"
         title="Consulting Engagements"
         subtitle="Detailed breakdown of problems addressed, technical deliverables, and architectural stack."
